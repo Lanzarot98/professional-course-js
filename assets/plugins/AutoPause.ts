@@ -1,11 +1,15 @@
+import MediaPlayer from "../MediaPlayer";
 class AutoPause {
+    private threshold: number;
+    player: MediaPlayer;
+    
     constructor() {
         this.threshold = 0.25;
         // hacer permanente this a la instancia del objeto
         this.handleIntersection = this.handleIntersection.bind(this); 
         this.handleVisibilityChange = this.handleVisibilityChange.bind(this); 
     }
-    run(player) {
+    run(player: MediaPlayer) {
         this.player = player;
         const observer = new IntersectionObserver(this.handleIntersection, {
             threshold: this.threshold,
@@ -16,7 +20,7 @@ class AutoPause {
     }
 
     // siempre que se llame esta función this se va a referir a la instancia del plugin
-    handleIntersection(entries) {
+    private handleIntersection(entries: IntersectionObserverEntry[]) {
         const entry = entries[0];
 
         const isVisible = entry.intersectionRatio >= this.threshold
@@ -28,7 +32,7 @@ class AutoPause {
             this.player.pause();
         }
     }
-    handleVisibilityChange() {
+    private handleVisibilityChange() {
         const isVisible = document.visibilityState === "visible";
         if (isVisible) {
             this.player.play();

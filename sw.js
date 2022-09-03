@@ -23,14 +23,14 @@ async function precache() {
     // nos da instancia de un cache que pertenece a v1 pero esto es una promesa
     const cache = await caches.open(VERSION)
     return cache.addAll([
-        '/',
-        '/index.html',
-        '/assets/index.js',
-        '/assets/MediaPlayer.js',
-        '/assets/plugins/AutoPlay.js',
-        '/assets/plugins/AutoPause.js',
-        '/assets/index.css',
-        '/assets/BigBuckBunny.mp4',
+        // '/',
+        // '/index.html',
+        // '/assets/index.js',
+        // '/assets/MediaPlayer.js',
+        // '/assets/plugins/AutoPlay.js',
+        // '/assets/plugins/AutoPause.js',
+        // '/assets/index.css',
+        // '/assets/BigBuckBunny.mp4',
     ])
 }
 
